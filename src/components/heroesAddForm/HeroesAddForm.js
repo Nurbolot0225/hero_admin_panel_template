@@ -22,14 +22,16 @@ const HeroesAddForm = () => {
             description: heroDescr,
             element: heroElement
         }
+
         request("http://localhost:3001/heroes", "POST", JSON.stringify(newHero))
             .then(res => console.log(res, 'Отправка успешна'))
             .then(dispatch(heroCreated(newHero)))
             .catch(err => console.log(err));
+
         setHeroName('');
         setHeroDescr('');
         setHeroElement('');
-    } 
+    }
 
     const renderFilters = (filters, status) => {
         if (status === "loading") {
